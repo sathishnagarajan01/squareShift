@@ -1,0 +1,146 @@
+[
+    {
+        "weightMin": 1,
+        "weightMax": 2,
+        "distance": [
+            {
+                "distanceMin": 1,
+                "distanceMax": 5,
+                "price": 12
+            },
+            {
+                "distanceMin": 5,
+                "distanceMax": 20,
+                "price": 15
+            },
+            {
+                "distanceMin": 20,
+                "distanceMax": 50,
+                "price": 20
+            },
+            {
+                "distanceMin": 50,
+                "distanceMax": 500,
+                "price": 50
+            },
+            {
+                "distanceMin": 500,
+                "distanceMax": 800,
+                "price": 100
+            },
+            {
+                "distanceMin": 800,
+                "distanceMax": 800,
+                "price": 220
+            }
+        ]
+    },
+    {
+        "weightMin": 2.01,
+        "weightMax": 5,
+        "distance": [
+            {
+                "distanceMin": 1,
+                "distanceMax": 5,
+                "price": 14
+            },
+            {
+                "distanceMin": 5,
+                "distanceMax": 20,
+                "price": 18
+            },
+            {
+                "distanceMin": 20,
+                "distanceMax": 50,
+                "price": 24
+            },
+            {
+                "distanceMin": 50,
+                "distanceMax": 500,
+                "price": 55
+            },
+            {
+                "distanceMin": 500,
+                "distanceMax": 800,
+                "price": 110
+            },
+            {
+                "distanceMin": 800,
+                "distanceMax": 800,
+                "price": 250
+            }
+        ]
+    },
+    {
+        "weightMin": 5.01,
+        "weightMax": 20,
+        "distance": [
+            {
+                "distanceMin": 1,
+                "distanceMax": 5,
+                "price": 16
+            },
+            {
+                "distanceMin": 5,
+                "distanceMax": 20,
+                "price": 25
+            },
+            {
+                "distanceMin": 20,
+                "distanceMax": 50,
+                "price": 30
+            },
+            {
+                "distanceMin": 50,
+                "distanceMax": 500,
+                "price": 80
+            },
+            {
+                "distanceMin": 500,
+                "distanceMax": 800,
+                "price": 130
+            },
+            {
+                "distanceMin": 800,
+                "distanceMax": 800,
+                "price": 270
+            }
+        ]
+    },
+    {
+        "weightMin": 20.01,
+        "weightMax": 100,
+        "distance": [
+            {
+                "distanceMin": 1,
+                "distanceMax": 5,
+                "price": 21
+            },
+            {
+                "distanceMin": 5,
+                "distanceMax": 20,
+                "price": 35
+            },
+            {
+                "distanceMin": 20,
+                "distanceMax": 50,
+                "price": 50
+            },
+            {
+                "distanceMin": 50,
+                "distanceMax": 500,
+                "price": 90
+            },
+            {
+                "distanceMin": 500,
+                "distanceMax": 800,
+                "price": 150
+            },
+            {
+                "distanceMin": 800,
+                "distanceMax": 800,
+                "price": 300
+            }
+        ]
+    }
+]

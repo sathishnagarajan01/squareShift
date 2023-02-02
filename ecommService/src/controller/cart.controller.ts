@@ -9,6 +9,7 @@ export class CartController {
         this.router.post('/item', this.addItem);
         this.router.get('/items/', this.findItems);
         this.router.delete('/', this.deleteItemsByUser);
+        this.router.get('/checkout', this.checkoutValue);
     }
 
     public async addItem(req: Request, res: Response, next: NextFunction) {
@@ -35,6 +36,15 @@ export class CartController {
             ResponseApi.ok(req, res, 'All items deleted in cart');
         } catch(err) {
             ResponseApi.badRequest(req, res, err.message);
+        }
+    }
+
+    public async checkoutValue(req: Request, res: Response, next: NextFunction) {
+        try {
+            let checkout = await cartService.checkoutValue(req);
+            ResponseApi.ok(req, res, checkout);
+        } catch(err) {
+            ResponseApi.serverError(req, res, err.message);
         }
     }
 }

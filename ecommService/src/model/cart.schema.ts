@@ -12,6 +12,10 @@ const cartTable = new Schema({
         required: true,
         index: true
     },
+    itemCount: {
+        type: Number,
+        default: 1
+    },
     item: {
         id: {
             type: Number,
