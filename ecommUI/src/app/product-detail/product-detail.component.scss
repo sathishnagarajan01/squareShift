@@ -1,0 +1,56 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.menuDiv {
+    padding: 10px;
+}
+.productDetailWrap {
+    padding: 10px;
+    .productCard {
+        margin: 15px;
+        padding: 10px;
+        .productImgHead {
+            display: flex;
+            flex-direction: row;
+            .productImg {
+                width: 40%;
+            }
+            .rightContent {
+                margin-left: 100px;
+                .cartPriceDetails {
+                    .desc {
+                        text-align: justify;
+                        padding: 10px;
+                    }
+                    .price {
+                        font-size: 18px;
+                        font-weight: 800;
+                        text-decoration: underline;
+                    }
+                    .oldPrice {
+                        text-decoration: line-through;
+                        font-weight: 500;
+                        color: rgba(0,0,0,.54);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 937px) {
+    .productDetailWrap {
+        .productCard {
+            .productImgHead {
+                display: flex;
+                flex-direction: column;
+                .productImg {
+                    width: 100%;
+                }
+                .rightContent {
+                    margin-left: 0px;
+                }
+            }
+        }
+    }
+}

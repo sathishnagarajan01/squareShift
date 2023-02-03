@@ -1,0 +1,30 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.offer {
+    font-size: 14px;
+    font-weight: 800;
+}
+.menuDiv {
+    padding: 10px;
+}
+.productWrap {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .productCard {
+        width: 30%;
+        margin: 15px;
+    }
+}
+
+@media only screen and (max-width: 937px) {
+    .productWrap {
+        flex-direction: column;
+        .productCard {
+            width: 90%;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.cartWrap {
+    padding: 10px;
+    .cartItem {
+        margin: 15px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .marginTop {
+            margin-top: 2%;
+        }
+    }
+}
+.checkout {
+    padding: 25px;
+    float: right;
+    .postalcode > button {
+        margin-left: 10px;
+        height: 50px;
+    }
+}
