@@ -2,11 +2,12 @@
     <mat-toolbar color="primary">
         <span>SquareShift</span>
         <div class="menuDiv">
-            <a mat-button [routerLink]="">Product</a>
+            <a mat-button [routerLink]="['/product']">Product</a>
             <a mat-button [routerLink]="">Author</a>
         </div>
+        <span *ngIf="addStatus" class="success-msg">Product added to cart</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="moveToCart()">
             <mat-icon matBadge="{{cartCount}}" matBadgeOverlap="false">shopping_cart</mat-icon>
         </button>
     </mat-toolbar>
@@ -27,7 +28,7 @@
                     <div class="cartPriceDetails">
                         <p class="desc">{{productItem.response.description}}</p>
                         <p>
-                            <button mat-raised-button (click)="addToCart()">Add to cart</button>
+                            <button mat-raised-button (click)="addToCart(productItem)">Add to cart</button>
                         </p>
                         <p class="price">${{discountPrice}}</p>
                         <p class="oldPrice">${{productItem.response.price}}</p>

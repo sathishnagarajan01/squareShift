@@ -14,7 +14,7 @@ export class CartController {
 
     public async addItem(req: Request, res: Response, next: NextFunction) {
         try {
-            await cartService.addItem(req.body);
+            await cartService.addItem(req);
             ResponseApi.ok(req, res, 'Added to cart');
         } catch(err) {
             ResponseApi.badRequest(req, res, err.message);

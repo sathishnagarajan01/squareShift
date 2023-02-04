@@ -47,6 +47,18 @@ export class CartService {
 			.pipe(catchError(this.handleError));
 	}
 
+	checkout(postalCode: any) {
+		const url = `${environment.apiUrl}/cart/checkout?postalCode=${postalCode}`;
+		const headers = new HttpHeaders(
+			{
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+			}
+		)
+		return this.http.get(url, {headers})
+			.pipe(catchError(this.handleError));
+	}
+
 	handleError(error: HttpErrorResponse) {
 		let errMessage = '';
 		if(error.status === 0) {

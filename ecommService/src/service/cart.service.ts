@@ -9,10 +9,14 @@ import { checkoutValue } from '../response/checkout.response';
 class CartService {
     constructor() {}
 
-    async addItem(payload: any) {
+    async addItem(req: Request) {
         try {
+            let payload = req.body;
             // let cart = new cartModel();
             // await cart.save(payload);
+            let bearerToken: any = req.headers.bearerToken;
+            let jwtDecode: any = await jwt.decodeJwt(bearerToken);
+            payload['userId'] = jwtDecode.userId;
             await cartModel.insertMany([payload]);
         } catch(err) {
             throw new Error(err);
@@ -43,7 +47,9 @@ class CartService {
         let checkoutPrice: checkoutValue = {
             price: 0,
             discountedPrice: 0,
+            discountedPriceString: '0',
             totalPrice: 0,
+            totalPriceString: '0',
             totalWeight: 0,
             shippingCost: 0,
             distance: distance
@@ -53,8 +59,10 @@ class CartService {
             checkoutPrice.discountedPrice = (cart.item.price * (cart.item.discount_percentage/100)) + checkoutPrice.discountedPrice;
             checkoutPrice.totalWeight = (cart.item.weight_in_grams/1000) + checkoutPrice.totalWeight;
         }
+        checkoutPrice.discountedPriceString = (checkoutPrice.discountedPrice).toFixed(2);
         checkoutPrice.shippingCost = await shipping.getShippingCost(distance, checkoutPrice.totalWeight);
         checkoutPrice.totalPrice = (checkoutPrice.price+checkoutPrice.shippingCost)-checkoutPrice.discountedPrice;
+        checkoutPrice.totalPriceString = checkoutPrice.totalPrice.toFixed(2);
         return checkoutPrice;
     }
 

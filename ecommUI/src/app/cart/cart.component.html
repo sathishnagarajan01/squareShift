@@ -2,94 +2,23 @@
     <mat-toolbar color="primary">
         <span>SquareShift</span>
         <div class="menuDiv">
-            <a mat-button [routerLink]="">Product</a>
+            <a mat-button [routerLink]="['/product']">Product</a>
             <a mat-button [routerLink]="">Author</a>
         </div>
         <span class="example-spacer"></span>
-        <button mat-raised-button color="warn">Delete Cart</button>
+        <button mat-raised-button color="warn" (click)="deleteAllCart()">Delete Cart</button>
         <button mat-icon-button>
             <mat-icon matBadge="{{showCartCount}}" matBadgeOverlap="false">shopping_cart</mat-icon>
         </button>
     </mat-toolbar>
     <div class="cartWrap">
-        <mat-card class="cartItem">
+        <mat-card *ngFor="let cart of cartAllItem" class="cartItem">
             <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>women's clothing</mat-card-subtitle>
+                <mat-card-title>{{cart.item.title}}</mat-card-title>
+                <mat-card-subtitle>{{cart.item.category}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content class="marginTop">
-                <p>1</p>
-            </mat-card-content>
-            <mat-card-content class="marginTop">
-                <p>$900</p>
-            </mat-card-content>
-            <!--<mat-card-footer>
-                <button mat-icon-button>
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </mat-card-footer>-->
-        </mat-card>
-        <mat-card class="cartItem">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>women's clothing</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="marginTop">
-                <p>1</p>
-            </mat-card-content>
-            <mat-card-content class="marginTop">
-                <p>$900</p>
-            </mat-card-content>
-            <!--<mat-card-footer>
-                <button mat-icon-button>
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </mat-card-footer>-->
-        </mat-card>
-        <mat-card class="cartItem">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>women's clothing</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="marginTop">
-                <p>1</p>
-            </mat-card-content>
-            <mat-card-content class="marginTop">
-                <p>$900</p>
-            </mat-card-content>
-            <!--<mat-card-footer>
-                <button mat-icon-button>
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </mat-card-footer>-->
-        </mat-card>
-        <mat-card class="cartItem">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>women's clothing</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="marginTop">
-                <p>1</p>
-            </mat-card-content>
-            <mat-card-content class="marginTop">
-                <p>$900</p>
-            </mat-card-content>
-            <!--<mat-card-footer>
-                <button mat-icon-button>
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </mat-card-footer>-->
-        </mat-card>
-        <mat-card class="cartItem">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>women's clothing</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="marginTop">
-                <p>1</p>
-            </mat-card-content>
-            <mat-card-content class="marginTop">
-                <p>$900</p>
+                <p>${{cart.item.price}}</p>
             </mat-card-content>
             <!--<mat-card-footer>
                 <button mat-icon-button>
@@ -102,14 +31,18 @@
         <p class="postalcode">
             <mat-form-field appearance="outline">
                 <mat-label>Postalcode</mat-label>
-                <input matInput placeholder="postalcode"/>
+                <input matInput placeholder="postalcode" #postalcode/>
             </mat-form-field>
-            <button mat-raised-button>Check Availability</button>
+            <button mat-raised-button (click)="checkout()">Check Availability</button>
+            <br/>
+            <span *ngIf="postalStatus" class="error-msg">postalCode is required</span>
         </p>
-        <p>All Item Price: </p>
-        <p>Discount Price: </p>
-        <p>Shipping Cost: </p>
-        <p>Total Price: </p>
+        <span *ngIf="checkoutStatus">
+            <p>All Item Price: {{checkoutValue.price}}</p>
+            <p>Discount Price: {{checkoutValue.discountedPriceString}}</p>
+            <p>Shipping Cost: {{checkoutValue.shippingCost}}</p>
+            <p>Total Price: {{checkoutValue.totalPriceString}}</p>
+        </span>
         <p class="placeOrder">
             <button mat-raised-button color="primary" disabled>Make Payment</button>
         </p>

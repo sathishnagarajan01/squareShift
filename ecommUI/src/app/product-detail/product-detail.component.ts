@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../cart/cart.service';
 import { ProductService } from '../product/product.service';
 
@@ -8,7 +8,7 @@ import { ProductService } from '../product/product.service';
 	templateUrl: './product-detail.component.html',
 	styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
+export class ProductDetailComponent implements OnInit {
 	public productItem: any = {};
 	private id!: number
 	private sub: any;
@@ -17,10 +17,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 	public rateBlackStar: any = 0;
 	public rateWhiteStar: any = 0;
 	public cartCount: any = 0;
+	public addStatus: boolean = false;
 	constructor(
 		private productService: ProductService,
 		private route: ActivatedRoute,
-		private cartService: CartService
+		private cartService: CartService,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
@@ -33,10 +35,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 	}
 
 	addCartItem(cartData: any) {
-		this.cartService.addToCart(cartData)
+		let cartpayload = {
+			'item' : cartData
+		}
+		this.cartService.addToCart(cartpayload)
 		.subscribe({
 			next: (res: any) => {
 				console.log(res);
+				this.addStatus = true;
 			},
 			error: (err) => {
 				console.log(err);
@@ -61,7 +67,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 				this.rateBlackStar = Array(blackStar).fill('X');
 				this.rateWhiteStar = Array(whiteStar).fill('X');
 				this.productStatus = true;
-				this.addCartItem(product.response);
 			},
 			error: (err) => {
 				console.log(err);
@@ -72,12 +77,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	addToCart() {
-		this.cartCount++
-		localStorage.setItem('cartCount', this.cartCount.toString());
+	moveToCart() {
+		this.router.navigate(['/cart']);
 	}
 
-	ngOnDestroy() {
-		this.sub.unsubscribe();
+	addToCart(product: any) {
+		this.cartCount++
+		localStorage.setItem('cartCount', this.cartCount.toString());
+		this.addCartItem(product.response);
 	}
 }
