@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:9091'
+    apiUrl: 'http://sathishnagarajan.ap-1.evennode.com'
 }
