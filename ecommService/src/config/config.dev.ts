@@ -14,7 +14,7 @@ export class DevConfig {
         return {
             name: 'Square Shift E-Commerce',
             version: '1.0.0',
-            port: 9091,
+            port: process.env.PORT,
             environment: process.env.NODE_ENV,
             baseRoute: '/api',
             baseTestRoute: '/api/test',

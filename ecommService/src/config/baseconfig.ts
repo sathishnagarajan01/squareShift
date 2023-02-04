@@ -11,7 +11,7 @@ export abstract class BaseConfig {
     abstract appConfig(): {
         name: string,
         version: string,
-        port: number,
+        port: string,
         environment: string,
         baseRoute: string
         baseTestRoute: string,
