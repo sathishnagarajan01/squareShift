@@ -7,114 +7,18 @@
         </div>
         <span class="example-spacer"></span>
         <button mat-icon-button>
-            <mat-icon>shopping_cart</mat-icon>
+            <mat-icon matBadge="{{showCartCount}}" matBadgeOverlap="false">shopping_cart</mat-icon>
         </button>
     </mat-toolbar>
     <div class="productWrap">
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
+        <mat-card *ngFor="let product of productList" class="productCard" (click)="productDetail(product)">
+            <img class="prodImg" mat-card-image src="{{product.response.image}}">
             <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
+                <mat-card-title>{{product.response.title}}</mat-card-title>
+                <mat-card-subtitle>{{product.response.discount_percentage}}</mat-card-subtitle>
                 <span class="example-spacer"></span>
                 <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
-                    <span>Off</span>
-                </button>
-            </mat-card-header>
-        </mat-card>
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
-                <span class="example-spacer"></span>
-                <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
-                    <span>Off</span>
-                </button>
-            </mat-card-header>
-        </mat-card>
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
-                <span class="example-spacer"></span>
-                <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
-                    <span>Off</span>
-                </button>
-            </mat-card-header>
-        </mat-card>
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
-                <span class="example-spacer"></span>
-                <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
-                    <span>Off</span>
-                </button>
-            </mat-card-header>
-        </mat-card>
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
-                <span class="example-spacer"></span>
-                <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
-                    <span>Off</span>
-                </button>
-            </mat-card-header>
-        </mat-card>
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
-                <span class="example-spacer"></span>
-                <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
-                    <span>Off</span>
-                </button>
-            </mat-card-header>
-        </mat-card>
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
-                <span class="example-spacer"></span>
-                <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
-                    <span>Off</span>
-                </button>
-            </mat-card-header>
-        </mat-card>
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
-                <span class="example-spacer"></span>
-                <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
-                    <span>Off</span>
-                </button>
-            </mat-card-header>
-        </mat-card>
-        <mat-card class="productCard">
-            <img mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-                <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                <mat-card-subtitle>7.7% off</mat-card-subtitle>
-                <span class="example-spacer"></span>
-                <button color="warn" mat-fab class="offer">
-                    <span>1%</span><br/>
+                    <span>{{product.response.discount_percentage}}%</span><br/>
                     <span>Off</span>
                 </button>
             </mat-card-header>

@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
+	public showCartCount: any;
+	constructor() {}
 
+	ngOnInit(): void {
+		this.showCartCount = localStorage.getItem('cartCount');
+	}
 }

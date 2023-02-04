@@ -6,26 +6,37 @@
         <mat-card class="loginCard">
             <mat-card-header>
                 <mat-card-title>Login</mat-card-title>
-                <mat-card-subtitle>test</mat-card-subtitle>
+                <mat-card-subtitle *ngIf="errMsgStatus" class="error-msg">{{errMsg}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <form novalidate>
+                <form [formGroup]="LoginForm" (ngSubmit)="submitLogin()" novalidate>
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>Username</mat-label>
-                            <input type="text" matInput placeholder="username"/>
+                            <input type="text" matInput formControlName="username" placeholder="username" required/>
+                            <span
+                                class="error-msg"
+                                *ngIf="(loginFromControl['username'].touched || formSubmitted) && loginFromControl['username'].errors?.['required'] ">
+                                Username is required
+                            </span>
                         </mat-form-field>
                     </p>
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input type="password" matInput placeholder="password"/>
+                            <input type="password" matInput formControlName="password" placeholder="password" required/>
+                            <span
+                                class="error-msg"
+                                *ngIf="(loginFromControl['password'].touched || formSubmitted) && loginFromControl['password'].errors?.['required']">
+                                Password is required
+                            </span>
                         </mat-form-field>
                     </p>
                     <p>
                         <button type="submit" color="primary" mat-raised-button>Login</button>
                     </p>
                 </form>
+                <p>form value: {{LoginForm.status | json}}</p>
             </mat-card-content>
         </mat-card>
     </div>

@@ -7,35 +7,39 @@
         </div>
         <span class="example-spacer"></span>
         <button mat-icon-button>
-            <mat-icon>shopping_cart</mat-icon>
+            <mat-icon matBadge="{{cartCount}}" matBadgeOverlap="false">shopping_cart</mat-icon>
         </button>
     </mat-toolbar>
     <div class="productDetailWrap">
-        <mat-card class="productCard">
+        <mat-card *ngIf="productStatus" class="productCard">
             <div class="productImgHead">
-                <img class="productImg" mat-card-image src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg" alt="Photo of a Shiba Inu">                
+                <img class="productImg" mat-card-image src="{{productItem.response.image}}" alt="Photo of a Shiba Inu">                
                 <div class="rightContent">
                     <mat-card-header>
-                        <mat-card-title>SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s</mat-card-title>
-                        <mat-card-subtitle>women's clothing</mat-card-subtitle>
+                        <mat-card-title>{{productItem.response.title}}</mat-card-title>
+                        <mat-card-subtitle>{{productItem.response.category}}</mat-card-subtitle>
                         <span class="example-spacer"></span>
                         <button color="warn" mat-fab class="offer">
-                            <span>1%</span><br/>
+                            <span>{{productItem.response.discount_percentage}}%</span><br/>
                             <span>Off</span>
                         </button>
                     </mat-card-header>
                     <div class="cartPriceDetails">
-                        <p class="desc">Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)</p>
+                        <p class="desc">{{productItem.response.description}}</p>
                         <p>
-                            <button mat-raised-button>Add to cart</button>
+                            <button mat-raised-button (click)="addToCart()">Add to cart</button>
                         </p>
-                        <p class="price">$190</p>
-                        <p class="oldPrice">$290</p>
+                        <p class="price">${{discountPrice}}</p>
+                        <p class="oldPrice">${{productItem.response.price}}</p>
                         <p class="starRate">User Rating 
-                            <mat-icon>star</mat-icon>
-                            <mat-icon>star_outline</mat-icon>
+                            <span *ngFor="let blactStar of rateBlackStar">
+                                <mat-icon>star</mat-icon>
+                            </span>
+                            <span *ngFor="let whiteStar of rateWhiteStar">
+                                <mat-icon>star_outline</mat-icon>
+                            </span>
                         </p>
-                        <p>4.1 average based on 254 reviews.</p>
+                        <p>{{productItem.response.rating.rate}} average based on {{productItem.response.rating.count}} reviews.</p>
                     </div>
                 </div>
             </div>
